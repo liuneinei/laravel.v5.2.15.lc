@@ -144,7 +144,7 @@ class IndexController extends Controller{
         $arr = imagettfbbox($font_size,0,$font_file,$text1); //确定会变化的字符串的位置
 
         $text_width = $arr[2]-$arr[0]+5; //字符串文本框长度
-        $text_height = $arr[3]-$arr[5]+5; //字符串文本框高度
+        $text_height = $arr[3]-$arr[5]; //字符串文本框高度
 
         $bg = imagecreatetruecolor($text_width,$text_height);
         $white = imagecolorallocate($bg, 255, 255, 255); // 创建白色
@@ -156,7 +156,7 @@ class IndexController extends Controller{
         $text = self::autowrap(12, 0, $font_filec, $text, $text_width-10); // 自动换行处理
         //// $text = iconv("GB2312", "UTF-8", $text);
 //        imagettftext($bg, 12, 0, 10, 30, $white, $font_filec, $text);
-        imagettftext($bg, 12, 0, 10, 20, $grey, $font_filec, $text);      //输出一个灰色的字符串作为阴影
+        imagettftext($bg, 12, 0, 10, 15, $grey, $font_filec, $text);      //输出一个灰色的字符串作为阴影
         header("Content-type:image/png");
         imagepng($bg);
     }
@@ -171,7 +171,7 @@ class IndexController extends Controller{
 
         foreach ($letter as $l) {
             $teststr = $content." ".$l;
-            var_dump($teststr);
+            //var_dump($teststr);
             $testbox = imagettfbbox($fontsize, $angle, $fontface, $teststr);
             // 判断拼接后的字符串是否超过预设的宽度
             if (($testbox[2] > $width) && ($content !== "")) {
