@@ -12,7 +12,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Queue\Queue;
 use Illuminate\Support\Facades\Redis;
 use App\Models\News;
-use App\Models\HandleImg;
 use Intervention\Image\ImageManager as Image;
 
 class IndexController extends Controller{
