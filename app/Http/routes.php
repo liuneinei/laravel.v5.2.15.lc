@@ -37,6 +37,10 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'index',
         'uses' => 'Web\IndexController@Index'
     ]);
+    Route::get('strtoimg',[
+        'as' => 'web.strtoimg',
+        'uses' => 'Web\IndexController@Strtoimg'
+    ]);
 
     Route::get('category',[
         'as' => 'category',
@@ -46,5 +50,37 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('category',[
         'as' => 'post.category',
         'uses' => 'Web\CategoryController@postAddcategory'
+    ]);
+
+    Route::get('editmd',[
+        'as' => 'web.editmd',
+        'uses' => 'Web\EditmdController@Editmd'
+    ]);
+
+    Route::get('editmdfull',[
+        'as' => 'web.editmdfull',
+        'uses' => 'Web\EditmdController@Editmdfull'
+    ]);
+
+    /*
+     * 验证码
+     */
+    Route::get('kit/captcha/{tmp}', 'Web\KitController@captcha');
+    Route::get('imgzn/{str}', 'Web\IndexController@imgzn');
+
+    /*
+     * 图片上传
+     */
+    Route::post('uploader',[
+        'as' => 'web.uploader',
+        'uses' => 'Web\UploaderController@postUploader'
+    ]);
+
+    /*
+     * 图片上传回调
+     */
+    Route::get('upcallback',[
+        'as' => 'web.upcallback',
+        'uses' => 'Web\UploaderController@Upcallback'
     ]);
 });
