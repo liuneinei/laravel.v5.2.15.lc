@@ -134,7 +134,7 @@ class IndexController extends Controller{
          * 示例五，总结
          *
          */
-        $font_file = "/usr/app/laravel.v5.2.15.lc/public/fonts/simsun.ttf";//字体设置部分linux的路径
+        $font_file = dirname(__FILE__)."/fonts/simsun.ttf";//字体设置部分linux的路径
         $text  = $str; //要显示的字符串
         $font_size = 14; //字体大小
 
