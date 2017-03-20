@@ -62,6 +62,16 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'Web\EditmdController@Editmdfull'
     ]);
 
+    Route::get('users',[
+        'as' => 'web.users',
+        'uses' => 'Web\UsersController@getUsers'
+    ]);
+
+    Route::post('users',[
+        'as' => 'post.users',
+        'uses' => 'Web\UsersController@postUsers'
+    ]);
+
     /*
      * 验证码
      */
@@ -83,4 +93,16 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'web.upcallback',
         'uses' => 'Web\UploaderController@Upcallback'
     ]);
+
+    Route::get('/queues', function () {
+
+        for ($i = 0; $i < 10; $i++) {
+            $msg = uniqid($i);
+            dispatch(new App\Jobs\SendEmail($msg));
+            Illuminate\Contracts\Logging\Log::info('Queue pushed:'.$msg);
+        }
+
+        return 'Done!';
+
+    });
 });
