@@ -9,8 +9,9 @@ use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Contracts\Bus\SelfHandling;
 
-class SendEmail extends Job implements ShouldQueue
+class SendEmail extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 

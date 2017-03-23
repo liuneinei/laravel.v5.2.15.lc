@@ -13,8 +13,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Jobs\SendEmail;
-
+use App\Models\Users;
 
 class MailController extends Controller{
-
+    //发送提醒邮件
+    public function sendReminderEmail(Request $request,$id){
+        $user = Users::findOrFail($id);
+        $this->dispatch(new SendEmail($user));
+    }
 }

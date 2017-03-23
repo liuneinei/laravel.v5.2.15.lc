@@ -94,6 +94,8 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'Web\UploaderController@Upcallback'
     ]);
 
+    Route::get('mail/sendReminderEmail/{id}','Web\MailController@sendReminderEmail');
+
     Route::get('/queues', function () {
 
         for ($i = 0; $i < 10; $i++) {
