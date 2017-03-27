@@ -96,15 +96,19 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('mail/sendReminderEmail/{id}','Web\MailController@sendReminderEmail');
 
-    Route::get('/queues', function () {
+    /**
+     * ioredis
+     */
+    Route::get('ioredis',[
+        'as' => 'web.ioredis',
+        'uses' => 'Web\ioredisController@ioredis'
+    ]);
 
-        for ($i = 0; $i < 10; $i++) {
-            $msg = uniqid($i);
-            dispatch(new App\Jobs\SendEmail($msg));
-            Illuminate\Contracts\Logging\Log::info('Queue pushed:'.$msg);
-        }
-
-        return 'Done!';
-
+    /**
+     * 事件广播测试
+     */
+    Route::get('/event', function(){
+        Event::fire(new \App\Events\SomeEvent(5555));
+        return "hello world";
     });
 });
