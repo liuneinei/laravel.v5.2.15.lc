@@ -1,6 +1,6 @@
 <html>
 <head>
-    <script src="{{asset('/js/socket.io/node_modules/socket.io-client/dist/socket.io.js')}}"></script>
+    <script src="{{asset('/js/socket.io-client/dist/socket.io.js')}}"></script>
     <script type="text/javascript">
         var url='str';
         var socket = io('http://localhost:3000');
