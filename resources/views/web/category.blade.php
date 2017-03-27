@@ -19,7 +19,7 @@
 
 </form>
         <div>
-            {{$category->title}}
+{{--            {{$category->title}}--}}
             {!! ($errors->has('title') ? $errors->first('title') : '') !!}
         </div>
     @if (count($errors) > 0)

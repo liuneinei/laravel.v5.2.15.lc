@@ -109,6 +109,6 @@ Route::group(['middleware' => ['web']], function () {
      */
     Route::get('/event', function(){
         Event::fire(new \App\Events\SomeEvent(5555));
-        return "hello world";
+        return "Event fire.";
     });
 });
