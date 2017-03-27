@@ -2,14 +2,12 @@
 <head>
     <script src="{{asset('/js/socket.io-client/dist/socket.io.js')}}"></script>
     <script type="text/javascript">
-        var url='str';
-        var socket = io('http://localhost:3000');
+        var socket = io('http://localhost:8087');
         socket.on('connection', function (data) {
-            console.log('data：'+data);
+            console.log(data);
         });
-        socket.on('test-channel:App\\Events\\SomeEvent', function(message){
-            document.getElementById('message').innerHTML=message;
-            //console.log('message：'+message);
+        socket.on('test-channel:App\\Events\\SomeEvent', function(messaxge){
+            console.log(message);
         });
         console.log(socket);
     </script>

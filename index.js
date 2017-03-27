@@ -3,8 +3,8 @@ var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
 var Redis = require('ioredis');
 var redis = new Redis('6379','139.199.8.48',{ password: 'hi,redis' });
-app.listen(3000, function() {
-    console.log('Server is running! Listening on Port 3000');
+app.listen(8087, function() {
+    console.log('Server is running! Listening on Port 8087');
 });
 function handler(req, res) {
     res.writeHead(200);
@@ -22,7 +22,6 @@ redis.on('pmessage', function(subscribed, channel, message) {
     console.log(message);
 
     message = JSON.parse(message);
-    console.log('message:'+message);
     io.emit(channel + ':' + message.event, message.data);
 });
 
