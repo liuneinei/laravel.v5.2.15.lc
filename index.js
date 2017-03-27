@@ -2,7 +2,7 @@
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
 var Redis = require('ioredis');
-var redis = new Redis('6379','139.199.8.48',{ password: 'hi,redis' });
+var redis = new Redis('6379','139.199.8.48',{ password: '' });
 app.listen(8087, function() {
     console.log('Server is running! Listening on Port 8087');
 });

@@ -6,7 +6,7 @@
         socket.on('connection', function (data) {
             console.log(data);
         });
-        socket.on('test-channel:App\\Events\\SomeEvent', function(messaxge){
+        socket.on('test-channel:App\\Events\\SomeEvent', function(message){
             console.log(message);
         });
         console.log(socket);
