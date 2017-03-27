@@ -9,15 +9,17 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class SomeEvent extends Event implements ShouldBroadcast
 {
     use SerializesModels;
-
+    public $user_id;
+    public $name;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user_id)
     {
-        //
+        $this->user_id = $user_id;
+        $this->name = 'xu';
     }
 
     /**
@@ -27,6 +29,19 @@ class SomeEvent extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return [];
+        return ['test-channel'];
+    }
+
+    /**
+     * 获取广播数据。
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return [
+            'user' => $this->user_id,
+            'name' => 'aaaa',
+        ];
     }
 }
